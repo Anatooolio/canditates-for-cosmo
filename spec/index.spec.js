@@ -51,7 +51,7 @@ describe('Система отбора кандидатов в космонавт
     expect(candidates).not.toBe(cosmonauts);
   });
 
-  xit('сортировать кандидатов по оценке (и не мутировать исходный массив)', () => {
+  it('сортировать кандидатов по оценке (и не мутировать исходный массив)', () => {
     const sortedCandidates = sortByScore(candidates);
     const expectedResults = [vasily, ekaterina, viktor, zinaida, ivan];
     expect(sortedCandidates).toEqual(expectedResults);

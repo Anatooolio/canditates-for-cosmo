@@ -5,10 +5,6 @@ candidates = [
 	{ name: 'Зинаида Абрамова', age: 45, score: 78, serviceRecord: 14 },
 	{ name: 'Виктор Олегов', age: 54, score: 85, serviceRecord: 21 },
 ]
-// const a = candidates
-// console.log(a);
-// console.log(candidates);
-
 
 
 const filterByAge = (candidates) => {
@@ -29,26 +25,28 @@ const filterByServiceRecord = (candidates) => {
 }
 
 const sortByScore = (candidates) => {
-  const cosmo = candidates
-  const result = cosmo.sort((a, b) => a.age > b.age && a.score > b.score && a.serviceRecord > b.serviceRecord)
-  return result
+  return candidates.toSorted((a, b) => b.score - a.score)
 }
 
 const getMeanAge = (candidates) => {
-  const sortedCandidates = candidates
-  const result = sortedCandidates.sort((a, b) => b.score - a.score)
-  return result
+  let res = Number()
+	candidates.forEach(elem => {
+		res += elem.age
+		return res
+	})
+	let MeanAge = res / candidates.length
+  return MeanAge
 }
 
-// console.log(sortByScore(candidates));
-const getMeanAgeReduce = () => {
-	// посмотри, где используется эта функция и как
-	// можно менять параметры и тело функции
+
+const getMeanAgeReduce = (candidates) => {
+	const initialValue = 0
+  const result = candidates.reduce((accumulator, currentValue) => accumulator + currentValue.age, initialValue)
+  return result / candidates.length
 }
 
-const getNameOnly = () => {
-	// посмотри, где используется эта функция и как
-	// можно менять параметры и тело функции
+const getNameOnly = (candidates) => {
+	return candidates.name
 }
 
 module.exports = {
